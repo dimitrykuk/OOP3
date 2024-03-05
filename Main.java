@@ -29,7 +29,7 @@ import clients.Animals;
 
 public class Main {
     public static void main(String[] args) {
-        Animals dog = new Dog("Пес", 20, LocalDate.of(1, 01, 01), null);
+        Animals dog = new Dog("Пес", 20, LocalDate.of(1, 01, 01), new Owner());
         Goose goose = new Goose("Гус", 0, null, null);
         Cat cat = new Cat("Кот", 0, null, null);
         Chicken chicken = new Chicken("Кура", 0, null, null);
