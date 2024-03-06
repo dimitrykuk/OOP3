@@ -1,18 +1,16 @@
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 import clients.Owner;
 import clients.impl.Cat;
 import clients.impl.Chicken;
 import clients.impl.Dog;
-import clients.impl.Goat;
+//import clients.impl.Goat;
 import clients.impl.Goose;
-import clients.impl.Hamster;
+//import clients.impl.Hamster;
 import clients.impl.Lion;
-import clients.impl.Mouse;
+//import clients.impl.Mouse;
 import workers.*;
-import clients.Animals;
+//import clients.Animals;
 
 // Создать класс Doctor и подумать над его состоянием и поведением.
 // Создать класс Nurse(медсестра) и подумать над его состоянием и поведением.
@@ -29,39 +27,33 @@ import clients.Animals;
 
 public class Main {
     public static void main(String[] args) {
-        Animals dog = new Dog("Пес", 20, LocalDate.of(1, 01, 01), new Owner());
-        Goose goose = new Goose("Гус", 0, null, null);
-        Cat cat = new Cat("Кот", 0, null, null);
-        Chicken chicken = new Chicken("Кура", 0, null, null);
-        Goat goat = new Goat("Козел", 0, null, null);
-        Hamster hamster = new Hamster("Хомяк", 0, null, null);
-        Lion lion = new Lion("Лев", 0, null, null);
-        Mouse mouse = new Mouse("Мышь", 0, null, null);
         
-        List<Animals> animals = new ArrayList<>();
-        animals.add(dog);
-        animals.add(goose);
-        animals.add(cat);
-        animals.add(chicken);
-        animals.add(goat);
-        animals.add(hamster);
-        animals.add(lion);
-        animals.add(mouse);
+        
+        VeterinaryClinic vet1 = new VeterinaryClinic(); 
+        Dog dog = new Dog("Пес", 20, LocalDate.of(1, 01, 01), new Owner());
+        vet1.addPatient(dog);
+        vet1.addPatient(new Goose("Гус", 0, null, null));
+        vet1.addPatient(new Cat("Кот", 0, null, null));
+        vet1.addPatient(new Chicken("Кура", 0, null, null));
+        vet1.addPatient(new Lion("Лев", 0, null, null));
+        vet1.getPatientList();
 
-        
-        Doctor doc = new Doctor("Олег Петрович", LocalDate.of(1975, 03, 20), 024);
-        Nurse nura = new Nurse("Нюра", LocalDate.of(1960, 11, 21), 50);
+        Doctor Oleg = new Doctor("Олег Петрович", LocalDate.of(1975, 03, 20), 024);
+        vet1.toHeirPersonal(Oleg);
+        Nurse Nura = new Nurse("Нюра", LocalDate.of(1960, 11, 21), 50);
+        vet1.toHeirPersonal(Nura);
+        vet1.toHeirPersonal(new Nurse(null, null, 0));
+        vet1.toHeirPersonal(new Nurse(null, null, 0));
+        vet1.toHeirPersonal(new Doctor(null, null, 0));
+        vet1.getPersonalList();
 
-        VeterinaryClinic vet1 = new VeterinaryClinic();
-        
-        vet1.getAllFlyers(animals);
-        vet1.toHeir(doc.getInfo());
-        doc.doInspection(mouse);
-        doc.writeAppointment(mouse,"Analgin");
-        nura.makeInjection(dog);
-        nura.dictateAppointment(dog, "Paracetomol");
-        
-        System.out.println(goose.fly(5));
+        vet1.premiumDocs();
 
+        vet1.getAllFlyers();
+
+        Oleg.doInspection(dog);
+        Nura.dictateAppointment(dog, "Analgin");
+        
+        System.out.println(dog.run(1));
     }
 }
