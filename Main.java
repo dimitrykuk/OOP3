@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.util.*;
 
 import clients.Owner;
 import clients.impl.Cat;
@@ -9,51 +10,65 @@ import clients.impl.Goose;
 //import clients.impl.Hamster;
 import clients.impl.Lion;
 //import clients.impl.Mouse;
+import dragstore.Medicine;
+import dragstore.Medicine2;
+import dragstore.MedicineComponents;
+import dragstore.impl.Azitromid;
+import dragstore.impl.Piniciline;
+import dragstore.impl.Vebicide;
 import workers.*;
 //import clients.Animals;
 
-// Создать класс Doctor и подумать над его состоянием и поведением.
-// Создать класс Nurse(медсестра) и подумать над его состоянием и поведением.
-
-// Создайте интерфейсы Goable, Flyable, Swimable. У интерфейсов должны быть
-// методы получения скорости заданного действия: double run(), double fly(), double swim()
-
-// Добавьте наследников этим интерфейсам, но таким образом,
-// чтобы у каждого интерфейса было минимум по два наследника (при необходимости, добавьте в приложение новые классы)
-
-// Создать класс ВетеринарнаяКлиника (VeterinaryClinic)
-// У ветеринарной клиники добавьте методы получения всех бегающих, всех плавающих и всех летающих,
-// а также методы для работы с персоналом клиники.
+//Добавить интерфейс Copmparable<Medicine> к классу Medicine. Переопределить метод compareTo()
+//
+//Создать несколько экземпляров Medicine(лекарство), добавить их в ArrayList, написать метод, выводящий Medicine в отсортированном виде.
+//
+//        *(усложненное, не обязательное) Постараться написать еще 1 метод сортировки лекарств, но уже по другому параметру
+//Формат сдачи: ссылка на гит
 
 public class Main {
+
     public static void main(String[] args) {
-        
-        
-        VeterinaryClinic vet1 = new VeterinaryClinic(); 
-        Dog dog = new Dog("Пес", 20, LocalDate.of(1, 01, 01), new Owner());
-        vet1.addPatient(dog);
-        vet1.addPatient(new Goose("Гус", 0, null, null));
-        vet1.addPatient(new Cat("Кот", 0, null, null));
-        vet1.addPatient(new Chicken("Кура", 0, null, null));
-        vet1.addPatient(new Lion("Лев", 0, null, null));
-        vet1.getPatientList();
+        ArrayList<MedicineComponents> azitrox1 = new ArrayList<>();
+        Azitromid azitromid1 = new Azitromid("az1", 2.1f, 10);
+        Piniciline pinic1 = new Piniciline("pin1", 3.1f, 50);
+        Vebicide vebic1 = new Vebicide("veb1", 51.2f, 100);
 
-        Doctor Oleg = new Doctor("Олег Петрович", LocalDate.of(1975, 03, 20), 024);
-        vet1.toHeirPersonal(Oleg);
-        Nurse Nura = new Nurse("Нюра", LocalDate.of(1960, 11, 21), 50);
-        vet1.toHeirPersonal(Nura);
-        vet1.toHeirPersonal(new Nurse(null, null, 0));
-        vet1.toHeirPersonal(new Nurse(null, null, 0));
-        vet1.toHeirPersonal(new Doctor(null, null, 0));
-        vet1.getPersonalList();
 
-        vet1.premiumDocs();
+        ArrayList<MedicineComponents> azitrox2 = new ArrayList<>();
+        Azitromid azitromid2 = new Azitromid("az2", 2.1f, 1);
+        Piniciline pinic2 = new Piniciline("pin2", 3.1f, 5);
+        Vebicide vebic2 = new Vebicide("veb2", 51.2f, 10);
 
-        vet1.getAllFlyers();
 
-        Oleg.doInspection(dog);
-        Nura.dictateAppointment(dog, "Analgin");
-        
-        System.out.println(dog.run(1));
+        ArrayList<MedicineComponents> azitrox3 = new ArrayList<>();
+        Azitromid azitromid3 = new Azitromid("az2", 2.1f, 100);
+        Piniciline pinic3 = new Piniciline("pin2", 3.1f, 500);
+        Vebicide vebic3 = new Vebicide("veb2", 51.2f, 1000);
+
+
+        Medicine medicine1 = new Medicine();
+        Medicine medicine2 = new Medicine();
+        Medicine medicine3 = new Medicine();
+        medicine1.addComponent(azitromid1).addComponent(pinic1).addComponent(vebic1);
+        medicine2.addComponent(azitromid2).addComponent(pinic2).addComponent(vebic2);
+        medicine3.addComponent(azitromid3).addComponent(pinic3).addComponent(vebic3);
+
+        ArrayList<Medicine> medList = new ArrayList<>();
+        medList.add(medicine1);
+        medList.add(medicine2);
+        medList.add(medicine3);
+
+        System.out.println(medList);
+        for (Medicine med : medList) {
+            System.out.println(med);
+        }
+
+        Collections.sort(medList);
+
+        System.out.println("");
+        for (Medicine med : medList) {
+            System.out.println(med);
+        }
     }
 }
