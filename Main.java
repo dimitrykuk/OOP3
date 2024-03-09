@@ -29,23 +29,17 @@ import workers.*;
 public class Main {
 
     public static void main(String[] args) {
-        ArrayList<MedicineComponents> azitrox1 = new ArrayList<>();
         Azitromid azitromid1 = new Azitromid("az1", 2.1f, 10);
-        Piniciline pinic1 = new Piniciline("pin1", 3.1f, 50);
+        Piniciline pinic1 = new Piniciline("pin1", 3.1f, 10);
         Vebicide vebic1 = new Vebicide("veb1", 51.2f, 100);
 
-
-        ArrayList<MedicineComponents> azitrox2 = new ArrayList<>();
         Azitromid azitromid2 = new Azitromid("az2", 2.1f, 1);
-        Piniciline pinic2 = new Piniciline("pin2", 3.1f, 5);
+        Piniciline pinic2 = new Piniciline("pin2", 3.1f, 50);
         Vebicide vebic2 = new Vebicide("veb2", 51.2f, 10);
 
-
-        ArrayList<MedicineComponents> azitrox3 = new ArrayList<>();
-        Azitromid azitromid3 = new Azitromid("az2", 2.1f, 100);
-        Piniciline pinic3 = new Piniciline("pin2", 3.1f, 500);
-        Vebicide vebic3 = new Vebicide("veb2", 51.2f, 1000);
-
+        Azitromid azitromid3 = new Azitromid("az3", 2.1f, 100);
+        Piniciline pinic3 = new Piniciline("pin3", 3.1f, 2);
+        Vebicide vebic3 = new Vebicide("veb3", 51.2f, 1);
 
         Medicine medicine1 = new Medicine();
         Medicine medicine2 = new Medicine();
@@ -59,9 +53,8 @@ public class Main {
         medList.add(medicine2);
         medList.add(medicine3);
 
-        System.out.println(medList);
         for (Medicine med : medList) {
-            System.out.println(med);
+           System.out.println(med);
         }
 
         Collections.sort(medList);

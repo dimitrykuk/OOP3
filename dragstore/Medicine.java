@@ -19,6 +19,14 @@ public class Medicine implements Iterator<MedicineComponents>, Comparable<Medici
         return this;
     }
 
+    private int getSumPow(){
+        int pow = 0;
+        for (MedicineComponents medcomp: components){
+            pow = pow + medcomp.getPower();
+        }
+        return pow;
+    }
+
     @Override
     public boolean hasNext() {
         //return components.iterator().hasNext();
@@ -36,13 +44,9 @@ public class Medicine implements Iterator<MedicineComponents>, Comparable<Medici
         return "Medicine: " + components.toString();
     }
 
+
     @Override
     public int compareTo(Medicine lec) {
-        int pow1 = 0;
-        int pow2 = 0;
-        while (this.hasNext()) pow1 = pow1 + this.next().getPower();
-        while (lec.hasNext()) pow2 = pow2 + lec.next().getPower();
-        //this.components.
-        return (pow1 - pow2);
+      return this.getSumPow()-lec.getSumPow();
     }
 }
